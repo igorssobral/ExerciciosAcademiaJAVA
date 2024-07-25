@@ -45,6 +45,6 @@ public class ContaCorrente {
     }
 
     private boolean validarretirada(double valor) {
-        return valor >= this.saldo;
+        return valor <= this.saldo;
     }
 }
