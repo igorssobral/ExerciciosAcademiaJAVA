@@ -1,5 +1,8 @@
 package semana1.quarta.atividade2;
 
+import semana1.quarta.atividade2.erros.DepositoInvalidoException;
+import semana1.quarta.atividade2.erros.EstouroSaqueException;
+
 import java.util.Date;
 
 public class ContaCorrente {
@@ -20,6 +23,9 @@ public class ContaCorrente {
     }
 
     public void depositar(double valor) {
+        if(valor < 0){
+            throw new DepositoInvalidoException("Quantia Inválida!");
+        }
         this.saldo += valor;
     }
 
@@ -27,7 +33,7 @@ public class ContaCorrente {
         if(validarretirada(valor)){
             this.saldo -= valor;
         }else{
-            System.out.println("Seu saldo:"+this.saldo +"\nVocê não tem o saldo de R$"+valor+" suficiente! Saque cancelado!");
+           throw new EstouroSaqueException("Saldo insuficiente! Saque cancelado!");
         }
     }
 

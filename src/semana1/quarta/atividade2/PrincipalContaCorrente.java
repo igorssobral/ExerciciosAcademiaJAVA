@@ -1,5 +1,7 @@
 package semana1.quarta.atividade2;
 
+import semana1.quarta.atividade2.erros.DepositoInvalidoException;
+
 import java.util.Date;
 
 public class PrincipalContaCorrente {
@@ -29,7 +31,13 @@ public class PrincipalContaCorrente {
 
         //Depositando nas contas
         System.out.println("\n---DEPOSITO NAS CONTAS---");
-        conta1.depositar(1000);
+
+        try {
+            conta1.depositar(-1);
+        }catch (DepositoInvalidoException e){
+            System.out.println("Erro: "+ e.getMessage());
+        }
+
         conta1.exibirExtrato();
         conta2.depositar(750);
         conta2.exibirExtrato();
